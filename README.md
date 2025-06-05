@@ -68,3 +68,8 @@ docker system prune
 
 Access the App:
 Open http://localhost:5003 (or localhost:3000 if changed) in your browser to see the frontend. You can register, log in, and manage your todo list from there.
+
+
+# React-to-do
+This is the first react project I created . Its a basic to-do page understanding basic react properties like props and hooks.
+Many more to go . 
