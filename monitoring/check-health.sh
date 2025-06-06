@@ -14,7 +14,6 @@ if command -v kubectl &> /dev/null; then
     sleep 2
     URL="http://localhost:8080"
 else
-    # Fallback to localhost
     URL="http://localhost:5000"
 fi
 
@@ -25,10 +24,10 @@ HEALTH_RESPONSE=$(curl -s "$URL/health")
 HEALTH_STATUS=$?
 
 if [ $HEALTH_STATUS -eq 0 ]; then
-    echo "✅ Application is healthy"
+    echo "Application is healthy"
     echo "$HEALTH_RESPONSE" | jq . 2>/dev/null || echo "$HEALTH_RESPONSE"
 else
-    echo "❌ Application health check failed"
+    echo "Application health check failed"
     exit 1
 fi
 
@@ -40,10 +39,10 @@ METRICS_RESPONSE=$(curl -s "$URL/metrics")
 METRICS_STATUS=$?
 
 if [ $METRICS_STATUS -eq 0 ]; then
-    echo "📊 Metrics collected successfully"
+    echo "Metrics collected successfully"
     echo "$METRICS_RESPONSE" | jq . 2>/dev/null || echo "$METRICS_RESPONSE"
 else
-    echo "❌ Metrics collection failed"
+    echo "Metrics collection failed"
 fi
 
 # Cleanup background process if started
@@ -52,4 +51,4 @@ if [ ! -z "$PID" ]; then
 fi
 
 echo ""
-echo "🎯 Monitoring check complete!" 
+echo "Monitoring check complete!" 
